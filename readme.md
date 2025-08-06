@@ -1,4 +1,4 @@
-# Library Management API with Express, TypeScript & MongoDB
+# Shelfy - Library Management API
 
 A comprehensive library management system built with Node.js, Express, TypeScript, and MongoDB. This system allows you to manage books and track borrowing activities with proper business logic enforcement.
 
