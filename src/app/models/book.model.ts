@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, UpdateQuery } from "mongoose";
 import BookInterface, { BookStaticMethod } from "../interfaces/book.interface";
 
 // book schema
@@ -46,6 +46,25 @@ bookSchema.pre("save", function (next) {
   } else {
     this.available = true;
   }
+  next();
+});
+
+// pre-findOneAndUpdate middleware for available
+bookSchema.pre("findOneAndUpdate", async function (next) {
+  const update = this.getUpdate() as UpdateQuery<{
+    copies: number;
+    available: boolean;
+  }>;
+
+  if (update?.copies !== undefined) {
+    if (update.copies === 0) {
+      update.available = false;
+    } else {
+      update.available = true;
+    }
+    this.setUpdate(update);
+  }
+
   next();
 });
 

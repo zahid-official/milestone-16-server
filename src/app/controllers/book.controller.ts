@@ -110,7 +110,7 @@ const bookRouter = express.Router();
       try {
         const id = req.params.bookId;
         const body = await bookUpdateZodSchema.parseAsync(req.body);
-        const result = await Book.findByIdAndUpdate(id, body, {
+        const result = await Book.findOneAndUpdate({ _id: id }, body, {
           new: true,
           runValidators: true,
         });
