@@ -274,29 +274,29 @@ All API responses share a consistent structure:
 
 <div>
 <pre>
-                            Client POST /api/borrow
-                                    │
-                                    ▼
-                  Zod validates { book, quantity, dueDate }
-                                    │
-                                    ▼
-                    BorrowModel.borrowBook() static method
-                                    │
-                              ┌─────┴──────┐
-                              │            │
-                              ▼            ▼
-                      Book exists?  Enough copies?
-                              │            │
-                              └─────┬──────┘
-                                    │ Yes
-                                    ▼
-                        Deduct copies from book
-                                    │
-                                    ▼
-                Pre-save hook sets available = (copies > 0)
-                                    │
-                                    ▼
-                  Save borrow record → Return 201 response
+                                      Client POST /api/borrow
+                                              │
+                                              ▼
+                            Zod validates { book, quantity, dueDate }
+                                              │
+                                              ▼
+                              BorrowModel.borrowBook() static method
+                                              │
+                                        ┌─────┴──────┐
+                                        │            │
+                                        ▼            ▼
+                                Book exists?  Enough copies?
+                                        │            │
+                                        └─────┬──────┘
+                                              │ Yes
+                                              ▼
+                                  Deduct copies from book
+                                              │
+                                              ▼
+                          Pre-save hook sets available = (copies > 0)
+                                              │
+                                              ▼
+                            Save borrow record → Return 201 response
 </pre>
 </div>
 
