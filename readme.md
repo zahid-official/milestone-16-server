@@ -7,7 +7,7 @@
 The powerful RESTful server-side engine for the Shelfy Library Management System, built with Node.js, Express and MongoDB.
 
 [![Client Repo](https://img.shields.io/badge/Client--Side-Repository-007ACC?style=for-the-badge&logo=react)](https://github.com/zahid-official/milestone-16-client)
-[![GitHub Repo](https://img.shields.io/badge/Backend--Side-Repository-181717?style=for-the-badge&logo=github)](https://github.com/zahid-official/milestone-16-server)
+[![GitHub Repo](https://img.shields.io/badge/Backend--Side-Repository-181717?style=for-the-badge&logo=github)](https://github.com/zahid-official/milestone-16-shelfyServer)
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
@@ -163,7 +163,7 @@ milestone-16-server/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/zahid-official/milestone-16-server.git
+   git clone https://github.com/zahid-official/milestone-16-shelfyServer.git
    cd milestone-16-server
    ```
 
