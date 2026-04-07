@@ -2,11 +2,12 @@
 
 <img src="https://cdn-icons-png.flaticon.com/512/2702/2702134.png" alt="Shelfy Logo" width="60" />
 
-# Shelfy - Library Management API
+# Shelfy - Backend API
 
-A comprehensive RESTful API for managing library books and borrowing activities, built with TypeScript and MongoDB.
+The powerful RESTful server-side engine for the Shelfy Library Management System, built with Node.js, Express and MongoDB.
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-milestone--16--server-181717?style=for-the-badge&logo=github)](https://github.com/zahid-official/milestone-16-server)
+[![Client Repo](https://img.shields.io/badge/Client--Side-Repository-007ACC?style=for-the-badge&logo=react)](https://github.com/zahid-official/milestone-16-client)
+[![GitHub Repo](https://img.shields.io/badge/Backend--Side-Repository-181717?style=for-the-badge&logo=github)](https://github.com/zahid-official/milestone-16-server)
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
@@ -16,11 +17,11 @@ A comprehensive RESTful API for managing library books and borrowing activities,
 
 <br/>
 
-## 🔍 Overview
+## 🔍 Backend Overview
 
-> **Shelfy** is a production-ready Library Management System API that handles book inventory and borrowing workflows with strict business logic enforcement, robust validation, and clean, structured responses.
+> **Shelfy Backend** is a production-ready API that serves as the core engine for the Shelfy ecosystem. It handles complex book inventory management and borrowing workflows with strict business logic enforcement and robust data validation.
 
-Built with a focus on **data integrity**, **type safety**, and **scalability** — Shelfy provides a solid backend foundation for any library or book-tracking application.
+This repository focuses exclusively on the **Server-Side logic**, providing a high-performance RESTful API for the [Shelfy Client-Side Application](https://github.com/zahid-official/milestone-16-client).
 
 <br/>
 
@@ -32,7 +33,7 @@ Built with a focus on **data integrity**, **type safety**, and **scalability** �
 <tr><th align="left">Feature</th><th align="left">Description</th></tr>
 </thead>
 <tbody>
-<tr><td><b>CRUD Operations</b></td><td>Create, read, update, and delete books with full validation</td></tr>
+<tr><td><b>CRUD Operations</b></td><td>Create, read, update and delete books with full validation</td></tr>
 <tr><td><b>Genre Filtering</b></td><td>Filter books by FICTION, NON_FICTION, SCIENCE, HISTORY, BIOGRAPHY, FANTASY</td></tr>
 <tr><td><b>Advanced Sorting</b></td><td>Sort by any field in ascending or descending order with pagination</td></tr>
 <tr><td><b>Unique ISBN</b></td><td>Enforces unique ISBN per book to prevent duplicate entries</td></tr>
@@ -249,10 +250,10 @@ All API responses share a consistent structure:
 </table>
 
 **Query Parameters for `GET /api/books`:**
-- `filter` — Genre filter: `FICTION | NON_FICTION | SCIENCE | HISTORY | BIOGRAPHY | FANTASY`
-- `sortBy` — Field to sort by (default: `createdAt`)
-- `sort` — Order: `asc` or `desc` (default: `asc`)
-- `limit` — Number of results (default: `10`)
+- `filter` - Genre filter: `FICTION | NON_FICTION | SCIENCE | HISTORY | BIOGRAPHY | FANTASY`
+- `sortBy` - Field to sort by (default: `createdAt`)
+- `sort` - Order: `asc` or `desc` (default: `asc`)
+- `limit` - Number of results (default: `10`)
 
 ### 🔄 Borrow Endpoints
 
@@ -274,38 +275,57 @@ All API responses share a consistent structure:
 
 <div>
 <pre>
-                                      Client POST /api/borrow
-                                              │
-                                              ▼
-                            Zod validates { book, quantity, dueDate }
-                                              │
-                                              ▼
-                              BorrowModel.borrowBook() static method
-                                              │
-                                        ┌─────┴──────┐
-                                        │            │
-                                        ▼            ▼
-                                Book exists?  Enough copies?
-                                        │            │
-                                        └─────┬──────┘
-                                              │ Yes
-                                              ▼
-                                  Deduct copies from book
-                                              │
-                                              ▼
-                          Pre-save hook sets available = (copies > 0)
-                                              │
-                                              ▼
-                            Save borrow record → Return 201 response
+                                       Client POST /api/borrow
+                                                  │
+                                                  ▼
+                              Zod validates { book, quantity, dueDate }
+                                                  │
+                                                  ▼
+                                BorrowModel.borrowBook() static method
+                                                  │
+                                            ┌─────┴──────┐
+                                            │            │
+                                            ▼            ▼
+                                    Book exists?  Enough copies?
+                                            │            │
+                                            └─────┬──────┘
+                                                  │ Yes
+                                                  ▼
+                                      Deduct copies from book
+                                                  │
+                                                  ▼
+                              Pre-save hook sets available = (copies > 0)
+                                                  │
+                                                  ▼
+                                Save borrow record → Return 201 response
 </pre>
 </div>
 
-1. **Request received** — Zod validates all fields including future-date enforcement
-2. **Static method invoked** — `BorrowModel.borrowBook()` handles the complete workflow
-3. **Availability checked** — Ensures sufficient copies are available before proceeding
-4. **Copy count updated** — Deducts borrowed quantity from the book document
-5. **Middleware fires** — Pre-save hook automatically recalculates the `available` flag
-6. **Borrow record saved** — Returns the new borrow document with a `201` status
+1. **Request received** - Zod validates all fields including future-date enforcement
+2. **Static method invoked** - `BorrowModel.borrowBook()` handles the complete workflow
+3. **Availability checked** - Ensures sufficient copies are available before proceeding
+4. **Copy count updated** - Deducts borrowed quantity from the book document
+5. **Middleware fires** - Pre-save hook automatically recalculates the `available` flag
+6. **Borrow record saved** - Returns the new borrow document with a `201` status
+
+<br/>
+
+## 🌟 Author
+
+<div align="center">
+  <a href="https://github.com/zahid-official">
+    <img src="https://github.com/zahid-official.png" width="100" height="100" style="border-radius: 50%;" alt="Zahid Official" />
+  </a>
+
+  <h3>Zahid Official</h3>
+  <p><b>Web Developer | Tech Enthusiast</b></p>
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zahid-official)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/zahid-web)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:zahid.official8@gmail.com)
+
+  <p>Crafting robust, type-safe APIs and clean architectural solutions.</p>
+</div>
 
 <br/>
 
@@ -330,23 +350,6 @@ git push origin feature/your-feature-name
 ```
 
 <br/>
-
 <div align="center">
-
-<img src="https://github.com/zahid-official.png" alt="Zahid" width="80" style="border-radius: 50%;" />
-
-<h3>Zahid</h3>
-<p><b>Full Stack Web Developer</b></p>
-
-[![GitHub](https://img.shields.io/badge/GitHub-zahid--official-181717?style=for-the-badge&logo=github)](https://github.com/zahid-official)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/zahid-official)
-
-*Building clean APIs and elegant interfaces, one commit at a time.*
-
-</div>
-
-<br/>
-
-<div align="center">
-<p><b>Shelfy</b> — <i>Your books, managed with precision.</i></p>
+<p><b>Shelfy</b> - <i>Your books, managed with precision.</i></p>
 </div>
