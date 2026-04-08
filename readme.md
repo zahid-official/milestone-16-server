@@ -6,7 +6,7 @@
 
 The powerful RESTful server-side engine for the Shelfy Library Management System, built with Node.js, Express and MongoDB.
 
-[![Client Repo](https://img.shields.io/badge/Client--Side-Repository-007ACC?style=for-the-badge&logo=react)](https://github.com/zahid-official/milestone-16-client)
+[![Client Repo](https://img.shields.io/badge/Client--Side-Repository-007ACC?style=for-the-badge&logo=react)](https://github.com/zahid-official/milestone-16-shelfyClient)
 [![GitHub Repo](https://img.shields.io/badge/Backend--Side-Repository-181717?style=for-the-badge&logo=github)](https://github.com/zahid-official/milestone-16-shelfyServer)
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
 <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
@@ -21,7 +21,7 @@ The powerful RESTful server-side engine for the Shelfy Library Management System
 
 > **Shelfy Backend** is a production-ready API that serves as the core engine for the Shelfy ecosystem. It handles complex book inventory management and borrowing workflows with strict business logic enforcement and robust data validation.
 
-This repository focuses exclusively on the **Server-Side logic**, providing a high-performance RESTful API for the [Shelfy Client-Side Application](https://github.com/zahid-official/milestone-16-client).
+This repository focuses exclusively on the **Server-Side logic**, providing a high-performance RESTful API for the [Shelfy Client-Side Application](https://github.com/zahid-official/milestone-16-shelfyClient).
 
 <br/>
 
